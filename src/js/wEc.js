@@ -55,10 +55,16 @@ function buttonFactory(id) {
       id,
       type: 'submit',
       'class': `${nameSpace}-button button-${id}`,
-    }
+    },
   });
 }
 
 const promptInput = textInputFactory('prompt-field');
 
-const promptButton = buttonFactory('')
+const submitPrompt = buttonFactory('promptSecret');
+
+const cancelPrompt = buttonFactory('promptFailed');
+
+const filterDialog = dialogFactory('filter', [promptInput, submitPrompt, cancelPrompt]);
+
+document.body.appendChild(filterDialog);
