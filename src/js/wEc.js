@@ -42,6 +42,7 @@ function dialogFactory(id, children) {
     element: 'dialog',
     attr: {
       id,
+      open: 'open',
       class: `${nameSpace}-container-${id}`,
     },
     children,
@@ -65,6 +66,23 @@ const submitPrompt = buttonFactory('promptSecret');
 
 const cancelPrompt = buttonFactory('promptFailed');
 
-const filterDialog = dialogFactory('filter', [promptInput, submitPrompt, cancelPrompt]);
+const filterDialog = dialogFactory('filterDialog', [promptInput, submitPrompt, cancelPrompt]);
 
-document.body.appendChild(filterDialog);
+function wEc () {
+  document.body.appendChild(filterDialog);
+
+  return {
+    submit(field) {
+
+      if (field.id === 'promptField') {
+        if (field.getAttribute('value') === '1234') {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+  }
+}
+
+export default wEc;
