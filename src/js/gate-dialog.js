@@ -1,4 +1,5 @@
-import { DOC, nameSpace } from './settings';
+import { wEc } from './wEc';
+import { DOC } from './settings';
 import {
   textInputFactory, buttonFactory, formFactory, dialogFactory,
 } from './factories';
@@ -9,22 +10,18 @@ const submitPrompt = buttonFactory('promptSecret');
 
 const cancelPrompt = buttonFactory('promptFailed');
 
-const filterForm = formFactory('filter-form', [promptInput, submitPrompt, cancelPrompt]);
+const gateForm = formFactory('gate-form', [promptInput, submitPrompt, cancelPrompt]);
 
-const filterDialog = dialogFactory('filterDialog', [filterForm]);
+const gateDialog = dialogFactory('gateDialog', [gateForm]);
 
-function letsEncrypt() {
-  // const
-  const wEcV2Dialog = dialogFactory(`${nameSpace}Dialog`);
-}
-
-export function wEc() {
-  DOC.body.appendChild(filterDialog);
+export function gate() {
+  DOC.body.appendChild(gateDialog);
 
   return {
     submit(field) {
       if (field.id === 'promptField') {
         if (field.getAttribute('value') === '1234') {
+          wEc();
           return true;
         }
         return false;

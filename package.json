@@ -15,6 +15,7 @@
   "author": "colecmc",
   "license": "MIT",
   "dependencies": {
+    "lodash": "4.17.11",
     "webpack": "^4.28.1"
   },
   "devDependencies": {
