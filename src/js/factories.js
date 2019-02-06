@@ -2,7 +2,7 @@ import { camelCase, startCase } from 'lodash/string';
 import createDOM from './createDOM';
 import { nameSpace } from './settings';
 
-export function textInputFactory(kebabId) {
+export function textInputFactory(kebabId, type = 'text') {
   const id = camelCase(kebabId);
 
   return createDOM({
@@ -13,8 +13,8 @@ export function textInputFactory(kebabId) {
       createDOM({
         element: 'input',
         attr: {
+          type,
           value: '',
-          type: 'text',
           name: `input_${id}`,
           id,
         },
@@ -31,31 +31,31 @@ export function formFactory(kebabId, children) {
       name: kebabId,
       autocomplete: false,
       id: camelCase(kebabId),
-      class: `${nameSpace}-form ${kebabId}`,
+      class: `${nameSpace}-form form-${kebabId}`,
     },
     children,
   });
 }
 
-export function dialogFactory(id, children) {
+export function dialogFactory(kebabId, children) {
   return createDOM({
     element: 'dialog',
     attr: {
-      id,
       open: 'open',
-      class: `${nameSpace}-container-${id}`,
+      id: camelCase(kebabId),
+      class: `${nameSpace}-dialog dialog-${kebabId}`,
     },
     children,
   });
 }
 
-export function buttonFactory(id) {
+export function buttonFactory(kebabId) {
   return createDOM({
     element: 'button',
     attr: {
-      id,
       type: 'submit',
-      class: `${nameSpace}-button button-${id}`,
+      id: camelCase(kebabId),
+      class: `${nameSpace}-button button-${kebabId}`,
     },
   });
 }
