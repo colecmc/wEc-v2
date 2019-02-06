@@ -1,4 +1,4 @@
-import { wEc } from './wEc';
+import { secure } from './secure-dialog';
 import { DOC } from './settings';
 import {
   textInputFactory, buttonFactory, formFactory, dialogFactory,
@@ -6,13 +6,13 @@ import {
 
 const promptInput = textInputFactory('prompt-field');
 
-const submitPrompt = buttonFactory('promptSecret');
+const submitPrompt = buttonFactory('prompt-Secret');
 
-const cancelPrompt = buttonFactory('promptFailed');
+const cancelPrompt = buttonFactory('prompt-Failed');
 
 const gateForm = formFactory('gate-form', [promptInput, submitPrompt, cancelPrompt]);
 
-const gateDialog = dialogFactory('gateDialog', [gateForm]);
+const gateDialog = dialogFactory('gate-Dialog', [gateForm]);
 
 export function gate() {
   DOC.body.appendChild(gateDialog);
@@ -21,7 +21,8 @@ export function gate() {
     submit(field) {
       if (field.id === 'promptField') {
         if (field.getAttribute('value') === '1234') {
-          wEc();
+          gateDialog.parentElement.removeChild(gateDialog);
+          secure();
           return true;
         }
         return false;

@@ -4,7 +4,7 @@ describe('gate', () => {
   const module = gate();
 
   test('gate should append a dialog element to the document body.', () => {
-    expect(document.getElementById('filterDialog')).toBeTruthy();
+    expect(document.getElementById('gateDialog')).toBeTruthy();
   });
 
   test('gate should open a dialog element prompting input.', () => {
@@ -30,7 +30,7 @@ describe('gate', () => {
   });
 
   test('gate should append another dialog element to the document body and remove the filter dialog.', () => {
-    expect(document.getElementById('wEcV2Dialog')).toBeTruthy();
+    expect(document.getElementById('secureContainer')).toBeTruthy();
     expect(document.getElementById('promptField')).toBeFalsy();
   });
 });

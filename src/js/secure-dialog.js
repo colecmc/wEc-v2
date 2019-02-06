@@ -7,10 +7,14 @@ const user = textInputFactory('email-address', 'email');
 
 const authType = textInputFactory('authentication-type');
 
-const submitButton = buttonFactory('authorize')
+const submitButton = buttonFactory('authorize');
+
+const secureForm = formFactory('authentication-controller', [user, authType, submitButton]);
+
+const secureDialog = dialogFactory('secure-container', [secureForm]);
 
 export function secure() {
-  DOC.body.appendChild(filterDialog);
+  DOC.body.appendChild(secureDialog);
 
   return {
     submit(field) {
@@ -24,4 +28,3 @@ export function secure() {
     },
   };
 }
-
