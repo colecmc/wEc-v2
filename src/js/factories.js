@@ -57,5 +57,14 @@ export function buttonFactory(kebabId) {
       id: camelCase(kebabId),
       class: `${nameSpace}-button button-${kebabId}`,
     },
+    children: [startCase(kebabId)],
+  });
+}
+
+export function optionFactory(val) {
+  return createDOM({
+    element: 'option',
+    attr: { value: val },
+    children: [startCase(val)],
   });
 }
