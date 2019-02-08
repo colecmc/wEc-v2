@@ -1,5 +1,6 @@
 import { validateParamString } from '../error-helpers';
 import { seperator } from '../settings';
+import Strategy from '../strategy';
 
 export function essential(client, vendor, type) {
   const entity = seperator(type);
@@ -14,4 +15,8 @@ export function essential(client, vendor, type) {
       .reduce((a, b) => a.concat(b), '')
       .replace(/(\d)+/g, `$&${entity}`);
   }
+
+  return false;
 }
+
+Strategy.registerStrategy(essential);

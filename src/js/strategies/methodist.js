@@ -1,5 +1,6 @@
 import { validateParamString } from '../error-helpers';
 import { seperator } from '../settings';
+import Strategy from '../strategy';
 
 const capLast = str => str.slice(0, str.length - 1) + str.charAt(str.length - 1).toUpperCase();
 function getNumByString(str) {
@@ -34,4 +35,8 @@ export function methodist(client, vendor, type) {
 
     return capLast(hostKey) + entity + getNumByString(hostKey) + entity + clientKey;
   }
+
+  return false;
 }
+
+Strategy.registerStrategy(methodist);

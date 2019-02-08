@@ -1,5 +1,6 @@
 import { validateParamString } from '../error-helpers';
 import { seperator } from '../settings';
+import Strategy from '../strategy';
 
 function compare(a, b) {
   if (a > b) {
@@ -12,7 +13,7 @@ function compare(a, b) {
   return 0;
 }
 
-export function essential(client, vendor, type) {
+export function sharp(client, vendor, type) {
   const entity = seperator(type);
   if (validateParamString(client) && validateParamString(vendor)) {
     return client
@@ -24,4 +25,8 @@ export function essential(client, vendor, type) {
       .reduce((a, b) => a.concat(b), '')
       .replace(/\S{1,4}(?=(\D{3})+(?!\D))/g, a => entity + a.charAt(0).toUpperCase() + a.slice(1));
   }
+
+  return false;
 }
+
+Strategy.registerStrategy(sharp);

@@ -1,4 +1,5 @@
 import { validateParamString } from '../error-helpers';
+import Strategy from '../strategy';
 
 export function basic(client, vendor) {
   if (validateParamString(client) && validateParamString(vendor)) {
@@ -9,4 +10,8 @@ export function basic(client, vendor) {
       .sort()
       .reduce((a, b) => a.concat(b), '');
   }
+
+  return false;
 }
+
+Strategy.registerStrategy(basic);
