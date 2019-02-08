@@ -3,7 +3,9 @@ import {
   textInputFactory, buttonFactory, formFactory, dialogFactory,
 } from './factories';
 
-const user = textInputFactory('email-address', 'email');
+import Strategy from './strategy';
+
+const user = textInputFactory('client-address', 'email');
 
 const authType = textInputFactory('authentication-type');
 
@@ -18,11 +20,8 @@ export function secure() {
 
   return {
     submit(field) {
-      if (field.id === 'promptField') {
-        if (field.getAttribute('value') === '1234') {
-          return true;
-        }
-        return false;
+      if (field.id === 'clientAddress') {
+        return Strategy.basic('tonystark@stark.iron', 'https://www.stark.iron');
       }
       return true;
     },
