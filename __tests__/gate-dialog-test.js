@@ -1,8 +1,6 @@
-import { gate } from '../src/js/gate-dialog';
+import gateDialog from '../src/js/gate-dialog';
 
 describe('gate', () => {
-  const module = gate();
-
   test('gate should append a dialog element to the document body.', () => {
     expect(document.getElementById('gateDialog')).toBeTruthy();
   });
@@ -13,24 +11,22 @@ describe('gate', () => {
     expect(prompt).toBeTruthy();
   });
 
-  test('The prompt should return false for invalid input. You shall not Paaaasssssss!', () => {
-    const prompt = document.getElementById('promptField');
+  test('The prompt should add `data-valid="false"` for invalid input. You shall not Paaaasssssss!', () => {
+    const promptInput = document.getElementById('promptField');
+    const gateForm = gateDialog.querySelector('#gateForm');
 
-    prompt.setAttribute('value', '5678');
-    const invalid = module.submit(prompt);
-    expect(invalid).toBeFalsy();
+    promptInput.setAttribute('value', '5678');
+    gateForm.componentData.submit();
+    expect(gateDialog.dataset.valid).toBe('false');
   });
 
-  test('The prompt should return true for a valid input. You may pass go.', () => {
-    const prompt = document.getElementById('promptField');
+  test('The prompt should add `data-valid="true"` for a valid input. You may pass go.', () => {
+    const promptInput = document.getElementById('promptField');
+    const gateForm = gateDialog.querySelector('#gateForm');
 
-    prompt.setAttribute('value', '1234');
-    const valid = module.submit(prompt);
-    expect(valid).toBeTruthy();
-  });
-
-  test('gate should append another dialog element to the document body and remove the filter dialog.', () => {
-    expect(document.getElementById('secureContainer')).toBeTruthy();
-    expect(document.getElementById('promptField')).toBeFalsy();
+    promptInput.setAttribute('value', '1234');
+    gateForm.componentData.submit(); // very good. Gate dialog should be gone from document now.
+    expect(gateDialog.dataset.valid).toBe('true');
+    expect(document.getElementById('gateDialog')).toBeFalsy();
   });
 });

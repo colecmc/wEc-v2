@@ -1,4 +1,3 @@
-import { secure } from './secure-dialog';
 import { DOC } from './settings';
 import {
   textInputFactory, buttonFactory, formFactory, dialogFactory,
@@ -6,28 +5,31 @@ import {
 
 const promptInput = textInputFactory('prompt-field');
 
-const submitPrompt = buttonFactory('prompt-Secret');
+const submitPrompt = buttonFactory('prompt-secret');
 
-const cancelPrompt = buttonFactory('prompt-Failed');
+const cancelPrompt = buttonFactory('prompt-failed');
 
 const gateForm = formFactory('gate-form', [promptInput, submitPrompt, cancelPrompt]);
 
-const gateDialog = dialogFactory('gate-Dialog', [gateForm]);
+const gateDialog = dialogFactory('gate-dialog', [gateForm]);
 
-export function gate() {
-  DOC.body.appendChild(gateDialog);
+const componentData = {
+  submit: function submit() {
+    const promptField = gateDialog.querySelector('#promptField');
 
-  return {
-    submit(field) {
-      if (field.id === 'promptField') {
-        if (field.getAttribute('value') === '1234') {
-          gateDialog.parentElement.removeChild(gateDialog);
-          secure();
-          return true;
-        }
-        return false;
-      }
+    if (promptField.getAttribute('value') === '1234') {
+      gateDialog.dataset.valid = 'true';
+      gateDialog.parentElement.dataset.gateIsValid = 'true';
+      gateDialog.parentElement.removeChild(gateDialog);
       return true;
-    },
-  };
-}
+    }
+
+    gateDialog.dataset.valid = 'false';
+    return false;
+  },
+};
+
+Object.assign(gateForm.componentData, componentData);
+gateForm.onsubmit = gateForm.componentData.submit;
+DOC.body.appendChild(gateDialog);
+export default gateDialog;

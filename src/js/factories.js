@@ -13,10 +13,11 @@ export function textInputFactory(kebabId, type = 'text') {
       createDOM({
         element: 'input',
         attr: {
+          id,
           type,
           value: '',
+          required: '',
           name: `input_${id}`,
-          id,
         },
       }),
     ],
@@ -28,6 +29,7 @@ export function formFactory(kebabId, children) {
     element: 'form',
     attr: {
       action: '#',
+      submit: null,
       name: kebabId,
       autocomplete: false,
       id: camelCase(kebabId),
