@@ -23,8 +23,6 @@ function webpackConfig(options) {
     entry: './src/js/wEc.js',
     output: {
       filename: 'app.js',
-      library: '',
-      libraryTarget: '',
       path: path.resolve(__dirname, './dist/'),
     },
   };

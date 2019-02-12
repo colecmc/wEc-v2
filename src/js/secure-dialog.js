@@ -39,7 +39,9 @@ const results = createDOM({
   attr: { id: `${nameSpace}Results` },
 });
 
+
 const secureDialog = dialogFactory('secure-container', [secureForm, results]);
+secureDialog.setAttribute('hidden','do not show');
 
 const componentData = {
   submit: function submit() {
@@ -49,7 +51,7 @@ const componentData = {
     const access = Strategy[selected.value](secureForm.elements.input_clientAddress.value, 'http://www.someurl.web', secureForm.elements.authenticationType.value);
     const result = secureDialog.querySelector(`#${nameSpace}Results`);
 
-    result.appendChild(document.createTextNode(access));
+    result.appendChild(DOC.createTextNode(access));
     return access;
   },
 };
