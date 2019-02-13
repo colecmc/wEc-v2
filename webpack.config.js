@@ -17,7 +17,7 @@ function webpackConfig(options) {
         },
       ],
     },
-    mode: options.mode,
+    mode: 'development',
     watch,
     devtool: 'source-map',
     entry: './src/js/wEc.js',

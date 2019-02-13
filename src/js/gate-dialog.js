@@ -17,7 +17,7 @@ const componentData = {
   submit: function submit() {
     const promptField = gateDialog.querySelector('#promptField');
 
-    if (promptField.getAttribute('value') === '1234') {
+    if (promptField.getAttribute('value') === '1234' || promptField.value === '1234') {
       gateDialog.dataset.valid = 'true';
       gateDialog.parentElement.dataset.gateIsValid = 'true';
       gateDialog.parentElement.removeChild(gateDialog);

@@ -41,7 +41,7 @@ const results = createDOM({
 
 
 const secureDialog = dialogFactory('secure-container', [secureForm, results]);
-secureDialog.setAttribute('hidden','do not show');
+secureDialog.removeAttribute('open');
 
 const componentData = {
   submit: function submit() {
@@ -52,7 +52,7 @@ const componentData = {
     const result = secureDialog.querySelector(`#${nameSpace}Results`);
 
     result.appendChild(DOC.createTextNode(access));
-    return access;
+    return false;
   },
 };
 
