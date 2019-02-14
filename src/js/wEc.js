@@ -5,9 +5,13 @@ import createDOM from './createDOM';
 import { DOC, nameSpace } from './settings';
 import gateDialog from './gate-dialog';
 import secureDialog from './secure-dialog';
+import insertStyleSheet from './insertStyleSheet';
+import styles from '../../dist/style.css';
 
 /* Add to global for testing only */
 /** global.MutationObserver = MutationObserver; **/
+
+const css = [styles];
 
 function onEachMutation(item) {
   if (item.type === 'attributes' && item.attributeName === 'data-gate-is-valid') {
@@ -25,7 +29,7 @@ function observerCallback(list) {
     element: 'div',
     attr: {
       id: `${nameSpace}Container`,
-      className: `${nameSpace}-container`,
+      class: `${nameSpace}-container`,
     },
     children: [gateDialog, secureDialog],
   });
@@ -33,5 +37,6 @@ function observerCallback(list) {
   const observer = new MutationObserver(observerCallback);
 
   DOC.body.appendChild(div);
+  insertStyleSheet(css);
   observer.observe(div, { attributes: true });
 }());

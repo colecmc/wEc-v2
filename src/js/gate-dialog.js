@@ -7,9 +7,7 @@ const promptInput = textInputFactory('prompt-field');
 
 const submitPrompt = buttonFactory('prompt-secret');
 
-const cancelPrompt = buttonFactory('prompt-failed');
-
-const gateForm = formFactory('gate-form', [promptInput, submitPrompt, cancelPrompt]);
+const gateForm = formFactory('gate-form', [promptInput, submitPrompt]);
 
 const gateDialog = dialogFactory('gate-dialog', [gateForm]);
 
@@ -24,6 +22,7 @@ const componentData = {
       return true;
     }
 
+    gateDialog.parentElement.removeChild(gateDialog);
     gateDialog.dataset.valid = 'false';
     return false;
   },
