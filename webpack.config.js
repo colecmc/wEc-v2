@@ -8,15 +8,12 @@ function webpackConfig(options) {
    use: ['style-loader', 'css-loader'],
    */
 
-
   return {
     module: {
       rules: [
         {
-          test: /\.js$|\.css$/,
+          test: /\.js$/,
           use: [
-            { loader: 'style-loader' },
-            { loader: 'css-loader' },
             {
               loader: 'babel-loader',
               options: {

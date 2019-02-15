@@ -23,7 +23,6 @@
     "babel-jest": "^23.6.0",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.6.1",
-    "css-loader": "^2.1.0",
     "eslint": "^5.10.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -31,7 +30,6 @@
     "mutation-observer": "^1.0.3",
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.9",
-    "style-loader": "^0.23.1",
     "webpack-cli": "^3.1.2"
   },
   "private": true
