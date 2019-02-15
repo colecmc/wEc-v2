@@ -1,5 +1,5 @@
 import { validateParamString } from '../error-helpers';
-import { seperator } from '../settings';
+import seperator from '../utils/seprator';
 import Strategy from '../strategy';
 
 function compare(a, b) {
@@ -21,7 +21,7 @@ export function sharp(client, vendor, type) {
       .split('')
       .sort(compare)
       .filter((item, index, self) => self.indexOf(item) === index)
-      .map(item => item.replace(/\W/ig, item.charCodeAt()))
+      .map(item => item.replace(/\W/ig, item.charCodeAt(0)))
       .reduce((a, b) => a.concat(b), '')
       .replace(/\S{1,4}(?=(\D{3})+(?!\D))/g, a => entity + a.charAt(0).toUpperCase() + a.slice(1));
   }

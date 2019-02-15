@@ -6,7 +6,6 @@ function validateParam(param) {
   return true;
 }
 
-
 export const validateParamString = param => validateParam([param, 'string']);
 
 export const validateParamFunction = param => validateParam([param, 'function']);
