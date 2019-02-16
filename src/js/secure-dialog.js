@@ -26,22 +26,43 @@ const select = createDOM({
   attr: {
     id: `${nameSpace}Strategies`,
     name: 'select_strategies',
+    class: 'select-strategies',
   },
   children: getSelectChildren(Array.from(Strategy.map.keys())),
 });
 
 const submitButton = buttonFactory('authorize');
 
-const secureForm = formFactory('authentication-controller', [user, authType, select, submitButton]);
+const textarea = createDOM({
+  element: 'textarea',
+  attr: {
+    class: 'blended-textarea',
+    id: `${nameSpace}Textarea`,
+  },
+});
+
+const secureForm = formFactory('authentication-controller', [user, authType, select, textarea, submitButton]);
 
 const results = createDOM({
   element: 'var',
-  attr: { id: `${nameSpace}Results` },
+  attr: {
+    id: `${nameSpace}Results`,
+    class: `${nameSpace}-results`,
+  },
 });
-
 
 const secureDialog = dialogFactory('secure-container', [secureForm, results]);
 secureDialog.removeAttribute('open');
+
+function copy(field, callback) {
+  field.select();
+  try {
+    DOC.execCommand('copy');
+    callback();
+  } catch (error) {
+    callback(error.message);
+  }
+}
 
 const componentData = {
   submit: function submit() {
@@ -49,9 +70,22 @@ const componentData = {
     const selected = selectEl.options[selectEl.selectedIndex];
 
     const access = Strategy[selected.value](secureForm.elements.input_clientAddress.value, 'http://www.someurl.web', secureForm.elements.authenticationType.value);
-    const result = secureDialog.querySelector(`#${nameSpace}Results`);
+    const field = secureDialog.querySelector(`#${nameSpace}Textarea`);
 
-    result.appendChild(DOC.createTextNode(access));
+    field.appendChild(DOC.createTextNode(access));
+    copy(field, (err) => {
+      const result = secureDialog.querySelector(`#${nameSpace}Results`);
+
+      if (err) {
+        result.appendChild(DOC.createTextNode(err));
+        return false;
+      }
+
+      Object.assign(field, { readOnly: true });
+      result.appendChild(DOC.createTextNode('copied OK!'));
+    });
+
+    secureForm.reset();
     return false;
   },
 };

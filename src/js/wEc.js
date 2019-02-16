@@ -22,16 +22,29 @@ const css = [
     background: #f0f0f0;
     border: solid 1px #ccc; }`,
   `.wEc-v2-container .wEc-v2-form {
-    margin: 0;
+    margin: 0 0 1rem 0;
     padding: 0; }`,
   `.wEc-v2-container .wEc-v2-form > label {
       display: block; }`,
   `.wEc-v2-container .wEc-v2-form > label > input {
-        font-size: 0.95em;
+        font-size: 0.091em;
+        color: white;
         display: block;
         width: 100%;
+        height: 2rem;
         padding: 0.5rem;
         margin: 0.5rem 0; }`,
+  `.select-strategies {
+      padding: .65rem;
+    }`,
+  `.wEc-v2-container .blended-textarea {
+      height: 0.091em;
+      color: #787878;
+      border: 0 none;
+      display: block;
+      font-size: 0.091em;
+      background: #787878;
+  }`,
   `.wEc-v2-container .wEc-v2-button {
     font-size: 1em;
     padding: 0.5rem;
