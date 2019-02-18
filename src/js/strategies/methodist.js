@@ -15,7 +15,9 @@ export function methodist(client, vendor, type) {
       .slice(0, client.indexOf('@'))
       .slice(0, 4);
 
-    return ''.concat(capLast(hostKey), entity, getNumByString(hostKey), entity, splitBack(clientKey));
+    return entity === '_'
+      ? ''.concat(capLast(hostKey), entity, getNumByString(hostKey), entity, clientKey)
+      : ''.concat(getNumByString(hostKey), entity, capLast(hostKey), entity, clientKey);
   }
 
   return false;

@@ -3,11 +3,6 @@ import path from 'path';
 function webpackConfig(options) {
   const watch = options.mode === 'development';
 
-  /*
-  * test: /\.css$/,
-   use: ['style-loader', 'css-loader'],
-   */
-
   return {
     module: {
       rules: [
@@ -23,12 +18,15 @@ function webpackConfig(options) {
         },
       ],
     },
-    mode: 'development',
+    mode: options.mode,
     watch,
     devtool: 'source-map',
-    entry: './src/js/wEc.js',
+    entry: {
+      'app': './src/js/wEc.js',
+      'add-script-to-page': './src/js/add-script-to-page.js',
+    },
     output: {
-      filename: 'app.js',
+      filename: '[name].js',
       path: path.resolve(__dirname, './dist/'),
     },
   };

@@ -2,6 +2,7 @@ import { validateParamString } from '../error-helpers';
 import seperator from '../utils/seprator';
 import capFirst from '../utils/cap-first';
 import getNumByString from '../utils/get-num-by-string';
+import Strategy from '../strategy';
 
 export function brilliant(client, vendor, type) {
   const entity = seperator(type);
@@ -16,3 +17,5 @@ export function brilliant(client, vendor, type) {
       : ''.concat(getNumByString(hostKey), entity, capFirst(hostKey), entity, capFirst(clientKey));
   }
 }
+
+Strategy.registerStrategy(brilliant);

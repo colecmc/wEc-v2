@@ -1,4 +1,5 @@
 import { DOC } from './settings';
+import equation from './utils/equation';
 import {
   textInputFactory, buttonFactory, formFactory, dialogFactory,
 } from './factories';
@@ -15,15 +16,15 @@ const componentData = {
   submit: function submit() {
     const promptField = gateDialog.querySelector('#promptField');
 
-    if (promptField.getAttribute('value') === '1234' || promptField.value === '1234') {
+    if (Number(promptField.getAttribute('value')) === equation() || Number(promptField.value) === equation()) {
       gateDialog.dataset.valid = 'true';
       gateDialog.parentElement.dataset.gateIsValid = 'true';
       gateDialog.parentElement.removeChild(gateDialog);
       return true;
     }
 
-    gateDialog.parentElement.removeChild(gateDialog);
     gateDialog.dataset.valid = 'false';
+    gateDialog.parentElement.removeChild(gateDialog);
     return false;
   },
 };

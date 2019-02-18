@@ -4,6 +4,7 @@ import capLast from '../utils/cap-last';
 import getNumByString from '../utils/get-num-by-string';
 import forceQuarter from '../utils/force-quarter';
 import splitBack from '../utils/split-back';
+import Strategy from '../strategy';
 
 export function advanced(client, vendor, type) {
   const entity = seperator(type);
@@ -17,3 +18,5 @@ export function advanced(client, vendor, type) {
     return ''.concat(capLast(hostKey), entity, getNumByString(hostKey), entity, clientKey);
   }
 }
+
+Strategy.registerStrategy(advanced);

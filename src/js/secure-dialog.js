@@ -69,7 +69,7 @@ const componentData = {
     const selectEl = secureForm.elements[`${nameSpace}Strategies`];
     const selected = selectEl.options[selectEl.selectedIndex];
 
-    const access = Strategy[selected.value](secureForm.elements.input_clientAddress.value, 'http://www.someurl.web', secureForm.elements.authenticationType.value);
+    const access = Strategy[selected.value](secureForm.elements.input_clientAddress.value, window.location.host, secureForm.elements.authenticationType.value);
     const field = secureDialog.querySelector(`#${nameSpace}Textarea`);
 
     field.appendChild(DOC.createTextNode(access));
@@ -82,7 +82,7 @@ const componentData = {
       }
 
       Object.assign(field, { readOnly: true });
-      result.appendChild(DOC.createTextNode('copied OK!'));
+      result.appendChild(DOC.createTextNode('copied OK!\n'));
     });
 
     secureForm.reset();
