@@ -1,8 +1,6 @@
 node_modules
 npm-debug.log
 .idea
-weakEnc.js
-src/js/weakEnc.js
 # Logs
 logs
 *.log
@@ -64,3 +62,5 @@ typings/
 
 # next.js build output
 .next
+=======
+equation.js

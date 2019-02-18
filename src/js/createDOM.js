@@ -37,6 +37,13 @@ function createDOM({ element, attr, children }) {
     }
   }
 
+  Object.defineProperty(el, 'componentData', {
+    configurable: false,
+    enumerable: true,
+    writable: true,
+    value: {},
+  });
+
   return el;
 }
 
