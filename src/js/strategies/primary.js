@@ -4,7 +4,7 @@ import capLast from '../utils/cap-last';
 import getNumByString from '../utils/get-num-by-string';
 import forceQuarter from '../utils/force-quarter';
 import splitBack from '../utils/split-back';
-import Strategy from "../strategy";
+import Strategy from '../strategy';
 
 export function primary(client, vendor, type) {
   const entity = seperator(type);
@@ -19,4 +19,4 @@ export function primary(client, vendor, type) {
   return false;
 }
 
-Strategy.registerStrategy(primary);
+Strategy.registerStrategy('primary', primary);

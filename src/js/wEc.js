@@ -15,12 +15,20 @@ const css = [
   `.wEc-v2-container {
   color: #787878;
   font-size: 18px;
-  font-family: arial, sans-serif; }`,
+  font-family: arial, sans-serif;
+    top: 0;
+    z-index: 9;
+    width: 100%;
+    position: fixed;
+  }`,
   `.wEc-v2-container .wEc-v2-dialog {
+    width: 200px;
+    margin: 0 auto;
     padding: 0.75rem;
     font-size: 0.85em;
     background: #f0f0f0;
-    border: solid 1px #ccc; }`,
+    border: solid 1px #ccc;
+  }`,
   `.wEc-v2-container .wEc-v2-form {
     margin: 0 0 1rem 0;
     padding: 0; }`,

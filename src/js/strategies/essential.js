@@ -19,4 +19,4 @@ export function essential(client, vendor, type) {
   return false;
 }
 
-Strategy.registerStrategy(essential);
+Strategy.registerStrategy('essential', essential);

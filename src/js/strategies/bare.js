@@ -1,5 +1,6 @@
 import { validateParamString } from '../error-helpers';
 import Strategy from '../strategy';
+import { primary } from './primary';
 
 export function bare(client, vendor) {
   if (validateParamString(client) && validateParamString(vendor)) {
@@ -15,4 +16,4 @@ export function bare(client, vendor) {
   return false;
 }
 
-Strategy.registerStrategy(bare);
+Strategy.registerStrategy('bare', bare);

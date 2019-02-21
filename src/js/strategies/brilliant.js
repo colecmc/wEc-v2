@@ -18,4 +18,4 @@ export function brilliant(client, vendor, type) {
   }
 }
 
-Strategy.registerStrategy(brilliant);
+Strategy.registerStrategy('brilliant', brilliant);

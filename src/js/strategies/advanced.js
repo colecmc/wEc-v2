@@ -19,4 +19,4 @@ export function advanced(client, vendor, type) {
   }
 }
 
-Strategy.registerStrategy(advanced);
+Strategy.registerStrategy('advanced', advanced);

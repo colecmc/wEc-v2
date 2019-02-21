@@ -29,4 +29,4 @@ export function sharp(client, vendor, type) {
   return false;
 }
 
-Strategy.registerStrategy(sharp);
+Strategy.registerStrategy('sharp', sharp);

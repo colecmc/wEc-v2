@@ -22,4 +22,4 @@ export function vital(client, vendor, type) {
   return false;
 }
 
-Strategy.registerStrategy(vital);
+Strategy.registerStrategy('vital', vital);

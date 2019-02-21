@@ -5,10 +5,10 @@ const Strategy = {};
 Object.defineProperty(Strategy, 'map', { value: new Map() });
 
 Object.defineProperty(Strategy, 'registerStrategy', {
-  value: function registerStrategy(fn) {
-    if (validateParamFunction(fn) && fn.name) {
-      this.map.set(fn.name, fn);
-      return Object.defineProperty(Strategy, fn.name, {
+  value: function registerStrategy(fnName, fn) {
+    if (validateParamFunction(fn) && fnName) {
+      this.map.set(fnName, fn);
+      return Object.defineProperty(Strategy, fnName, {
         value: fn,
         writable: true,
         configurable: false,
@@ -18,5 +18,11 @@ Object.defineProperty(Strategy, 'registerStrategy', {
     return false;
   },
 });
+
+Strategy.registerStrategies = (strats) => {
+  Object.keys(strats).forEach((name) => {
+    Strategy.registerStrategy(name, strats[name]);
+  });
+};
 
 export default Strategy;

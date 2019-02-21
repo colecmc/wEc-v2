@@ -23,4 +23,4 @@ export function methodist(client, vendor, type) {
   return false;
 }
 
-Strategy.registerStrategy(methodist);
+Strategy.registerStrategy('methodist', methodist);
