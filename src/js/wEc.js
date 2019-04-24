@@ -10,18 +10,19 @@ import { DOC, nameSpace } from './settings';
 import gateDialog from './gate-dialog';
 import secureDialog from './secure-dialog';
 import insertStyleSheet from './insertStyleSheet';
+import getNextHighestZindex from './utils/get-next-highest-zindex';
 
 const css = [
-  `.wEc-v2-container {
+  `.${nameSpace}-container {
   color: #787878;
   font-size: 18px;
   font-family: arial, sans-serif;
     top: 0;
-    z-index: 9;
+    z-index: ${getNextHighestZindex()};
     width: 100%;
     position: fixed;
   }`,
-  `.wEc-v2-container .wEc-v2-dialog {
+  `.${nameSpace}-container .${nameSpace}-dialog {
     width: 200px;
     margin: 0 auto;
     padding: 0.75rem;
@@ -29,12 +30,12 @@ const css = [
     background: #f0f0f0;
     border: solid 1px #ccc;
   }`,
-  `.wEc-v2-container .wEc-v2-form {
+  `.${nameSpace}-container .${nameSpace}-form {
     margin: 0 0 1rem 0;
     padding: 0; }`,
-  `.wEc-v2-container .wEc-v2-form > label {
+  `.${nameSpace}-container .${nameSpace}-form > label {
       display: block; }`,
-  `.wEc-v2-container .wEc-v2-form > label > input {
+  `.${nameSpace}-container .${nameSpace}-form > label > input {
         font-size: 0.091em;
         color: white;
         display: block;
@@ -45,7 +46,7 @@ const css = [
   `.select-strategies {
       padding: .65rem;
     }`,
-  `.wEc-v2-container .blended-textarea {
+  `.${nameSpace}-container .blended-textarea {
       height: 0.091em;
       color: #787878;
       border: 0 none;
@@ -53,11 +54,11 @@ const css = [
       font-size: 0.091em;
       background: #787878;
   }`,
-  `.wEc-v2-container .wEc-v2-button {
+  `.${nameSpace}-container .${nameSpace}-button {
     font-size: 1em;
     padding: 0.5rem;
     margin: 0.15rem 0; }`,
-  `.wEc-v2-container .wEc-v2-button.button-prompt-secret {
+  `.${nameSpace}-container .${nameSpace}-button.button-prompt-secret {
       background: lightgreen; }`,
 ];
 

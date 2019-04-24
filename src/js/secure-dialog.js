@@ -65,11 +65,12 @@ function copy(field, callback) {
 }
 
 const componentData = {
-  submit: function submit() {
-    const selectEl = secureForm.elements[`${nameSpace}Strategies`];
+  submit: function submit(event) {
+    event.preventDefault();
+    const group = secureForm.elements;
+    const selectEl = group[`${nameSpace}Strategies`];
     const selected = selectEl.options[selectEl.selectedIndex];
-
-    const access = Strategy[selected.value](secureForm.elements.input_clientAddress.value, window.location.host, secureForm.elements.authenticationType.value);
+    const access = Strategy[selected.value](group.input_clientAddress.value, location.host, group.authenticationType.value);
     const field = secureDialog.querySelector(`#${nameSpace}Textarea`);
 
     field.appendChild(DOC.createTextNode(access));
@@ -83,6 +84,7 @@ const componentData = {
 
       Object.assign(field, { readOnly: true });
       result.appendChild(DOC.createTextNode('copied OK!\n'));
+      return true;
     });
 
     secureForm.reset();

@@ -23,7 +23,6 @@ function webpackConfig(options) {
     devtool: 'source-map',
     entry: {
       'app': './src/js/wEc.js',
-      'add-script-to-page': './src/js/add-script-to-page.js',
     },
     output: {
       filename: '[name].js',

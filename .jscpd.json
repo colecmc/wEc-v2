@@ -1,0 +1,6 @@
+{
+  "threshold": 2,
+  "reporters": ["console"],
+  "ignore": ["**/__snapshots__/**"],
+  "absolute": false
+}
